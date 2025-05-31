@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>LGBTQ Expression Map and Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.1/wordcloud2.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fb;
+      color: #333;
+    }
+    header {
+      padding: 40px 20px 20px;
+      background-color: #ffffff;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    p.description {
+      color: #666;
+      font-size: 1em;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    #map {
+      width: 100%;
+      height: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .marker {
+      background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
+      background-size: cover;
+      width: 30px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #444;
+    }
+    .timeline-text {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+    .timeline-event {
+      margin-bottom: 20px;
+    }
+    .timeline-event h3 {
+      margin-bottom: 5px;
+      color: #2a2a2a;
+    }
+    #wordcloud {
+      width: 100%;
+      height: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>LGBTQ+ Expression in China and Australia</h1>
+  <p class="description">
+    This interactive map and timeline explore how LGBTQ+ individuals in China and Australia express their identities under contrasting cultural and media environments.
+  </p>
+</header>
+
+<section>
+  <h2>Map of LGBTQ+ Expressions</h2>
+  <div id="map"></div>
+</section>
+
+<section>
+  <h2>Coco & Richard's LGBTQ+ Expression Timeline</h2>
+  <div class="timeline-text">
+    <div class="timeline-event">
+      <h3>2018: Coco uses 'Le' in China</h3>
+      <p>To avoid censorship on social media, Coco uses code words like 'Le' and 'P' to express their identity.</p>
+    </div>
+    <div class="timeline-event">
+      <h3>2019: Richard's account is banned</h3>
+      <p>Richard is muted on a platform for referencing his same-sex partner. He begins using 'roommate' as a euphemism.</p>
+    </div>
+    <div class="timeline-event">
+      <h3>2020: Coco moves to Australia</h3>
+      <p>Coco publicly shares their bisexual identity for the first time using the #bisexual tag on Instagram.</p>
+    </div>
+    <div class="timeline-event">
+      <h3>2022: Richard comes out in Australia</h3>
+      <p>Richard expresses his true identity on Twitter and builds community among LGBTQ+ peers.</p>
+    </div>
+    <div class="timeline-event">
+      <h3>2025: Coco & Richard become advocates</h3>
+      <p>Both participate in LGBTQ+ events in Australia and share their cross-cultural experiences with campus communities.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Keyword Word Cloud (China vs Australia)</h2>
+  <div id="wordcloud"></div>
+</section>
+
+<script>
+  // Map setup
+  mapboxgl.accessToken = 'pk.eyJ1IjoidHJlaGJrIiwiYSI6ImNtYjdsbHZ5YjBjcXcyaHB3MXZhamdvcG4ifQ.2kvmmleMUTleqGJ8ctpadw';
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v11',
+    center: [130, 5],
+    zoom: 2.5
+  });
+  fetch('data.geojson')
+    .then(response => response.json())
+    .then(data => {
+      for (const feature of data.features) {
+        const el = document.createElement('div');
+        el.className = 'marker';
+        new mapboxgl.Marker(el)
+          .setLngLat(feature.geometry.coordinates)
+          .setPopup(new mapboxgl.Popup().setHTML(
+            `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+          ))
+          .addTo(map);
+      }
+    });
+
+  // Word Cloud
+  const words = [
+    ['Le', 50], ['P', 40], ['TPL', 30], ['roommate', 25], ['unspoken', 20],
+    ['lesbian', 60], ['gay', 55], ['bisexual', 45], ['partner', 35], ['pride', 30]
+  ];
+  WordCloud(document.getElementById('wordcloud'), {
+    list: words,
+    gridSize: 10,
+    weightFactor: 5,
+    fontFamily: 'Arial',
+    color: 'random-dark',
+    backgroundColor: '#fff'
+  });
+</script>
+
+</body>
+</html>

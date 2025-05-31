@@ -1,0 +1,55 @@
+{
+  "title": {
+    "text": {
+      "headline": "Coco & Richard 的 LGBTQ 表达时间线",
+      "text": "<p>通过这条时间线，我们可以看到 Coco 与 Richard 如何在中澳不同文化语境下改变表达方式。</p>"
+    }
+  },
+  "events": [
+    {
+      "start_date": {
+        "year": "2018"
+      },
+      "text": {
+        "headline": "Coco 在中国使用“Le”",
+        "text": "为了避开社交媒体审查，Coco 在中国社群中使用代号如“Le”、“P”来表达性取向。"
+      }
+    },
+    {
+      "start_date": {
+        "year": "2019"
+      },
+      "text": {
+        "headline": "Richard 的账号被封",
+        "text": "因在平台上提及同性伴侣，被认定违规并遭禁言。Richard 开始使用“室友”代指伴侣。"
+      }
+    },
+    {
+      "start_date": {
+        "year": "2020"
+      },
+      "text": {
+        "headline": "Coco 来到澳洲",
+        "text": "在 Instagram 上首次使用 #bisexual 标签公开发帖，表达真实身份。"
+      }
+    },
+    {
+      "start_date": {
+        "year": "2022"
+      },
+      "text": {
+        "headline": "Richard 在澳交友并出柜",
+        "text": "在推特上表达真实性取向，认识许多 LGBTQ 朋友，找到社群归属感。"
+      }
+    },
+    {
+      "start_date": {
+        "year": "2025"
+      },
+      "text": {
+        "headline": "Coco 与 Richard 成为倡导者",
+        "text": "两人参与澳洲多场 LGBTQ 活动，并在校园社群中分享跨文化身份经验。"
+      }
+    }
+  ]
+}

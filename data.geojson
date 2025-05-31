@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      },
+      "properties": {
+        "title": "China: LGBTQ Expression",
+        "description": "Uses coded words like 'Le', 'P', 'TPL' to avoid censorship and cannot express orientation openly."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9631,
+          -37.8136
+        ]
+      },
+      "properties": {
+        "title": "Australia (Melbourne): LGBTQ Expression",
+        "description": "Free use of LGBTQ+ labels and open expression of identity; social media helps community building."
+      }
+    }
+  ]
+}
